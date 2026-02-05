@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bài tập thực hành - Bài 5</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f9;
+    }
+
+    /* TOP BAR */
+    .navbar {
+        background: #1f2d3d;
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .navbar .left {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .navbar a {
+        color: #ddd;
+        text-decoration: none;
+    }
+    .navbar input {
+        padding: 5px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .add-btn {
+        background: #0d6efd;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background: #f1f1f1;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        border: none;
+        padding: 5px 8px;
+        margin-right: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* MODAL */
+    .modal {
+    display: none;              
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    }
+    .modal-content {
+        background: white;
+        width: 500px;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+    }
+    .modal-header {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .form-row {
+        margin-bottom: 10px;
+    }
+    .form-row label {
+        display: block;
+        margin-bottom: 3px;
+    }
+    .form-row input, .form-row select {
+        width: 100%;
+        padding: 6px;
+    }
+
+    .modal-actions {
+        text-align: right;
+        margin-top: 10px;
+    }
+    .save-btn {
+        background: #198754;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+    .cancel-btn {
+        background: gray;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+    .modal-header {
+    background: #0d6efd;
+    color: white;
+    padding: 10px 15px;
+    margin: -20px -20px 15px -20px;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: span 2;
+}
+
+.form-group label {
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.radio-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.modal-actions {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.save-btn {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="left">
+        <strong>HR Management</strong>
+        <a href="#">Home</a>
+        <a href="#">Contact</a>
+    </div>
+    <div>
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="header">
+        <h2>Employee</h2>
+        <button class="add-btn" onclick="openModal()">+ Add</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Position</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>1</td><td>Fatima Beatriz</td><td>Fatima Beatriz@gmail.com</td><td>0985674321</td><td>Staff</td>
+            <td><button class="btn-edit">Edit</button><button class="btn-delete">Delete</button></td>
+        </tr>
+        <tr>
+            <td>2</td><td>Gabriel Hanna</td><td>Gabriel Hanna@gmail.com</td><td>035674231</td><td>Staff</td>
+            <td><button class="btn-edit">Edit</button><button class="btn-delete">Delete</button></td>
+        </tr>
+        <tr>
+            <td>3</td><td>Charles Diya</td><td>Charles Diya@gmail.com</td><td>034765833</td><td>Staff</td>
+            <td><button class="btn-edit">Edit</button><button class="btn-delete">Delete</button></td>
+        </tr>
+        <tr>
+            <td>4</td><td>Frank Lamdo</td><td>Frank Lamdo@gmail.com</td><td>097544768</td><td>Manager</td>
+            <td><button class="btn-edit">Edit</button><button class="btn-delete">Delete</button></td>
+        </tr>
+        <tr>
+            <td>5</td><td>Louis Tom</td><td>Louis Tom@gmail.com</td><td>078956823</td><td>Staff</td>
+            <td><button class="btn-edit">Edit</button><button class="btn-delete">Delete</button></td>
+        </tr>
+    </table>
+</div>
+
+<!-- MODAL FORM -->
+<div class="modal" id="employeeModal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            New Employee
+            <span class="close" onclick="closeModal()">×</span>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email">
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Position</label>
+                <select>
+                    <option>-- Select Position --</option>
+                    <option>Staff</option>
+                    <option>Manager</option>
+                    <option>CEO</option>
+                </select>
+            </div>
+
+            <div class="form-group full">
+                <label>Sex</label>
+                <div class="radio-row">
+                    <label><input type="radio" name="sex"> Male</label>
+                    <label><input type="radio" name="sex"> Female</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="save-btn">Save</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function openModal() {
+    document.getElementById("employeeModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("employeeModal").style.display = "none";
+}
+</script>
+
+
+</body>
+</html>
