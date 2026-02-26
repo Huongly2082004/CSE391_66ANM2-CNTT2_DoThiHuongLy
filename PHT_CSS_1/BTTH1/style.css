@@ -1,0 +1,47 @@
+/* TODO 1: Universal selector reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TODO 2: Type selector cho body */
+body {
+    font-family: Arial;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+/* TODO 3: ID selector cho header */
+#main-header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+/* TODO 4: Class selector cho nav link */
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* TODO 5: Group selector */
+h1, h2, h3 {
+    font-family: Arial, sans-serif;
+}
+
+/* TODO 6: Descendant selector */
+nav a {
+    display: inline-block;
+    margin: 20px 15px;
+}
+
+/* TODO 7: Pseudo-class hover */
+a:hover {
+    color: white;
+    background-color: #ff6600;
+    transition: 0.3s;
+}
