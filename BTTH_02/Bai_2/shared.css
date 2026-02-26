@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #e8f1f4;
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 60px;
+  z-index: 10;
+}
+
+#page-logo a {
+  font-family: "Oleo Script", cursive;
+  font-size: 28px;
+  color: #ffe600;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  margin-left: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffe600;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: white;
+}
