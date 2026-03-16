@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Multi Step Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Đăng Ký Tài Khoản</h2>
+
+<!-- progress -->
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<form id="multiForm">
+
+<!-- STEP 1 -->
+<div class="step active">
+
+<h3>Bước 1: Thông tin cá nhân</h3>
+
+<label>Họ tên</label>
+<input type="text" id="fullname">
+<small class="error" id="nameError"></small>
+
+<label>Ngày sinh</label>
+<input type="date" id="birth">
+<small class="error" id="birthError"></small>
+
+<label>Giới tính</label>
+<div class="gender-group">
+<label><input type="radio" name="gender" value="Nam"> Nam</label>
+<label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+</div>
+<small class="error" id="genderError"></small>
+
+<button type="button" id="next1">Tiếp theo</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+<div class="step">
+
+<h3>Bước 2: Thông tin tài khoản</h3>
+
+<label>Email</label>
+<input type="text" id="email">
+<small class="error" id="emailError"></small>
+
+<label>Mật khẩu</label>
+<input type="password" id="password">
+<small class="error" id="passwordError"></small>
+
+<label>Xác nhận mật khẩu</label>
+<input type="password" id="confirmPassword">
+<small class="error" id="confirmError"></small>
+
+<button type="button" id="back1">Quay lại</button>
+<button type="button" id="next2">Tiếp theo</button>
+
+</div>
+
+
+<!-- STEP 3 -->
+<div class="step">
+
+<h3>Bước 3: Xác nhận thông tin</h3>
+
+<div id="summary"></div>
+
+<button type="button" id="back2">Quay lại</button>
+<button type="submit">Hoàn tất</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
